@@ -1,21 +1,28 @@
 package com.priorityonepodcast.p1app;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.squareup.okhttp.OkHttpClient;
 
 
-public class P1MainActivity extends ActionBarActivity {
+public class     P1MainActivity extends ActionBarActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_p1_main);
-    }
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_p1_main);
+        }
 
 
-    @Override
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_p1_main, menu);
@@ -35,5 +42,12 @@ public class P1MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void sendMessage(View view) {
+        EditText editText = (EditText) findViewById(R.id.edit_message);
+        String editValue = editText.getText().toString();
+        EditText toText = (EditText) findViewById(R.id.to_message);
+        toText.setText(editValue, TextView.BufferType.NORMAL);
     }
 }
