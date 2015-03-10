@@ -9,4 +9,9 @@
     <string name="title_activity_display_message">DisplayMessageActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_podcast">PodcastActivity</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_news">NewsActivity</string>
+    <string name="title_activity_notifications">NotificationsActivity</string>
+    <string name="title_activity_social">SocialActivity</string>
 </resources>
