@@ -9,11 +9,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.priorityonepodcast.p1app.managers.ShowsMgr;
 import com.squareup.okhttp.OkHttpClient;
 
+import java.util.List;
 
-public class     P1MainActivity extends ActionBarActivity {
+import temp.NewsItem;
+
+
+public class P1MainActivity extends ActionBarActivity {
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +82,20 @@ public class     P1MainActivity extends ActionBarActivity {
 
     public void sendMessage(View view) {
         EditText editText = (EditText) findViewById(R.id.edit_message);
-        String editValue = editText.getText().toString();
         EditText toText = (EditText) findViewById(R.id.to_message);
-        toText.setText(editValue, TextView.BufferType.NORMAL);
+
+        try {
+            ShowsMgr mgr = new ShowsMgr();
+            List<NewsItem> items = mgr.getShowSummaries();
+            editText.setText(items.size() + " loaded", TextView.BufferType.NORMAL);
+            String toTxt = "";
+            if (!items.isEmpty()) {
+                toTxt = items.get(0).toString();
+            }
+            toText.setText(toTxt, TextView.BufferType.NORMAL);
+        }
+        catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+        }
     }
 }

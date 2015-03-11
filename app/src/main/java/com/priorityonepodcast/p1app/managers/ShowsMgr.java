@@ -2,12 +2,22 @@ package com.priorityonepodcast.p1app.managers;
 
 import com.priorityonepodcast.p1app.model.SummaryPodcastItem;
 import com.priorityonepodcast.p1app.util.Close;
+import com.squareup.okhttp.Headers;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import temp.NewsItem;
 
 /**
  * Created by hjones on 2015-03-06.
@@ -24,20 +34,26 @@ public class ShowsMgr {
         file = f;
     }
 
-    public List<SummaryPodcastItem> getShowSummaries() throws IOException {
-        if (file == null) {
-            return SummaryPodcastItem.EMPTY_LIST;
+    public List<NewsItem> getShowSummaries() throws IOException {
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder().url("http://priorityonepodcast.com/feed/") .build();
+
+        Response response = client.newCall(request).execute();
+        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+        InputStream stream = null;
+
+        try {
+            stream = new ByteArrayInputStream(response.body().bytes());
+            NewsHandler task = new NewsHandler(stream);
+            return task.call();
         }
-        else {
-            InputStream stream = null;
-            try {
-                stream = new FileInputStream(file);
-                RetrieveShows task = new RetrieveShows(stream);
-                return task.call();
-            }
-            finally {
-                Close.safely(stream);
-            }
+        catch (Exception e) {
+            throw new IOException(e);
+        }
+        finally {
+            Close.safely(stream);
         }
     }
 }
