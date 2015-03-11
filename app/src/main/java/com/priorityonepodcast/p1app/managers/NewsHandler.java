@@ -1,4 +1,4 @@
-package temp;
+package com.priorityonepodcast.p1app.managers;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
+import temp.NewsItem;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
@@ -17,8 +19,8 @@ public class NewsHandler extends DefaultHandler {
     private final InputStream stream;
     private final StringBuilder sb = new StringBuilder();
 
-    NewsItem.Builder builder = new NewsItem.Builder();
     final List<NewsItem> list = new ArrayList<>();
+    NewsItem.Builder builder = new NewsItem.Builder();
 
     // --- Constructor and Initialization Methods
     NewsHandler(InputStream is) {
@@ -43,7 +45,7 @@ public class NewsHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
-    	if (XmlFields.ENCLOSURE.qName.equals(qName)) {
+    	if (NewsItem.XmlFields.ENCLOSURE.qName.equals(qName)) {
     		builder.startElement(qName, attributes);
     	}
     }
