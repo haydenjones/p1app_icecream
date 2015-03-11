@@ -40,6 +40,11 @@ public class     P1MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_social) {
+            Intent intent = new Intent(this, SocialActivity.class);
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
