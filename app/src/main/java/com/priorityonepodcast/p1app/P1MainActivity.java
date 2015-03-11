@@ -1,6 +1,5 @@
 package com.priorityonepodcast.p1app;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,12 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.priorityonepodcast.p1app.managers.ShowsMgr;
-import com.squareup.okhttp.OkHttpClient;
+import com.priorityonepodcast.p1app.tasks.FeedTask;
 
 import java.util.List;
 
-import temp.NewsItem;
+import com.priorityonepodcast.p1app.model.NewsItem;
 
 
 public class P1MainActivity extends ActionBarActivity {
@@ -81,21 +79,22 @@ public class P1MainActivity extends ActionBarActivity {
     }
 
     public void sendMessage(View view) {
+        FeedTask task = new FeedTask();
+        task.execute();
+    }
+
+    public void onNewsItems(List<NewsItem> items, Exception e) {
+        if (e != null) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+        }
         EditText editText = (EditText) findViewById(R.id.edit_message);
         EditText toText = (EditText) findViewById(R.id.to_message);
 
-        try {
-            ShowsMgr mgr = new ShowsMgr();
-            List<NewsItem> items = mgr.getShowSummaries();
-            editText.setText(items.size() + " loaded", TextView.BufferType.NORMAL);
-            String toTxt = "";
-            if (!items.isEmpty()) {
-                toTxt = items.get(0).toString();
-            }
-            toText.setText(toTxt, TextView.BufferType.NORMAL);
+        editText.setText(items.size() + " loaded", TextView.BufferType.NORMAL);
+        String toTxt = "";
+        if (!items.isEmpty()) {
+            toTxt = items.get(0).toString();
         }
-        catch (Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
-        }
+        toText.setText(toTxt, TextView.BufferType.NORMAL);
     }
 }

@@ -1,4 +1,4 @@
-package temp;
+package com.priorityonepodcast.p1app.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

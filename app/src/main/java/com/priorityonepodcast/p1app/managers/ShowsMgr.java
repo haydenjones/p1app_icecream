@@ -1,23 +1,17 @@
 package com.priorityonepodcast.p1app.managers;
 
-import com.priorityonepodcast.p1app.model.SummaryPodcastItem;
 import com.priorityonepodcast.p1app.util.Close;
-import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import temp.NewsItem;
+import com.priorityonepodcast.p1app.model.NewsItem;
 
 /**
  * Created by hjones on 2015-03-06.
