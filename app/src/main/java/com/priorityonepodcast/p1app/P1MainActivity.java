@@ -40,6 +40,31 @@ public class     P1MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_podcast) {
+            Intent intent = new Intent(this, P1MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if (id == R.id.action_events) {
+            Intent intent = new Intent(this, CalendarActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if (id == R.id.action_news) {
+            Intent intent = new Intent(this, NewsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if (id == R.id.action_push) {
+            Intent intent = new Intent(this, NotificationsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if (id == R.id.action_podcast) {
+            Intent intent = new Intent(this, P1MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
         else if (id == R.id.action_social) {
             Intent intent = new Intent(this, SocialActivity.class);
             startActivity(intent);

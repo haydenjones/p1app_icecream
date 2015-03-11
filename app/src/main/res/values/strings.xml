@@ -15,6 +15,10 @@
     <string name="title_activity_notifications">NotificationsActivity</string>
     <string name="title_activity_social">SocialActivity</string>
 
+    <string name="action_podcast">Podcasts</string>
+    <string name="action_events">Calendar</string>
+    <string name="action_news">News</string>
+    <string name="action_push">Notifications</string>
     <string name="action_social">Social Media</string>
 
 </resources>
