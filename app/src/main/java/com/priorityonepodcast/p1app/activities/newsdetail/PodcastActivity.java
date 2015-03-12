@@ -8,9 +8,14 @@ import android.widget.TextView;
 
 import com.priorityonepodcast.p1app.R;
 import com.priorityonepodcast.p1app.activities.MenuUtil;
+import com.priorityonepodcast.p1app.model.NewsItem;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class PodcastActivity extends ActionBarActivity {
+
+    public static final AtomicReference<NewsItem> HOLDER = new AtomicReference<>();
 
     public static final String NEWS_ITEM_ID = "news_item_id";
 
@@ -19,23 +24,18 @@ public class PodcastActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_podcast);
 
-        String show = "?";
+        final NewsItem ni = HOLDER.get();
+        if (ni != null) {
+            TextView tv = (TextView) findViewById(R.id.lbl_title);
+            tv.setText(ni.getTitle());
 
-        if (savedInstanceState == null) {
-            Bundle bundle = this.getIntent().getExtras();
-            if (bundle == null) {
-                show = "No Bundle :-(";
-            }
-            else {
-                show = bundle.getString(NEWS_ITEM_ID, "Unknown");
-            }
-        }
-        else {
-            savedInstanceState.getString(NEWS_ITEM_ID, "n/a");
+            tv = (TextView) findViewById(R.id.lbl_pubDate);
+            tv.setText(ni.getPublicationDesc());
+
+            tv = (TextView) findViewById(R.id.lbl_content);
+            tv.setText(ni.getDescription());
         }
 
-        TextView tv = (TextView) findViewById(R.id.hayden);
-        tv.setText(show);
     }
 
 

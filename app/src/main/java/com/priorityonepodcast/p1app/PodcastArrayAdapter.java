@@ -61,8 +61,10 @@ public class PodcastArrayAdapter extends ArrayAdapter<NewsItem> implements Adapt
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(context, PodcastActivity.class);
         String guid = "";
+        PodcastActivity.HOLDER.set(null);
         if ((position >= 0) && (newsItem.size() > position)) {
             NewsItem ni = newsItem.get(position);
+            PodcastActivity.HOLDER.set(ni);
             guid = ni.getGuid();
         }
         i.putExtra(PodcastActivity.NEWS_ITEM_ID, guid);
