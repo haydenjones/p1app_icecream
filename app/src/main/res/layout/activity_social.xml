@@ -12,11 +12,11 @@
     <RelativeLayout
         android:layout_below="@+id/banner_social"
         android:paddingLeft="16dp"
-        android:paddingTop="16dp"
+        android:paddingTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView android:id="@+id/link_facebook" android:onClick="onClick" android:clickable="true" android:paddingBottom="9dp" android:text="Facebook" android:layout_width="match_parent" android:layout_height="wrap_content" />
-        <TextView android:id="@+id/link_twitter" android:onClick="onClick" android:clickable="true" android:paddingBottom="9dp" android:text="Twitter" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/link_facebook" />
-        <TextView android:id="@+id/link_youtube" android:onClick="onClick" android:clickable="true" android:paddingBottom="9dp" android:text="YouTube" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/link_twitter" />
+        <TextView android:id="@+id/link_facebook" android:onClick="onClick" android:clickable="true" android:paddingBottom="24dp" android:text="Facebook" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/link_twitter" android:onClick="onClick" android:clickable="true" android:paddingBottom="24dp" android:text="Twitter" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/link_facebook" />
+        <TextView android:id="@+id/link_youtube" android:onClick="onClick" android:clickable="true" android:paddingBottom="24dp" android:text="YouTube" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/link_twitter" />
     </RelativeLayout>
 </RelativeLayout>

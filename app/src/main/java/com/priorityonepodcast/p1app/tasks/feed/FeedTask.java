@@ -1,4 +1,4 @@
-package com.priorityonepodcast.p1app.tasks;
+package com.priorityonepodcast.p1app.tasks.feed;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -14,23 +14,24 @@ import com.priorityonepodcast.p1app.model.NewsItem;
 /**
  * Created by hjones on 2015-03-11.
  */
-public class FeedTask extends AsyncTask<Void, Void, P1MainActivity> {
-    private final P1MainActivity activity;
+public class FeedTask extends AsyncTask<Void, Void, NewsListener> {
+    private final NewsListener activity;
 
     private final List<NewsItem> list = new ArrayList<>();
     private volatile Exception thrown = null;
 
-    public FeedTask(P1MainActivity gui) {
+    public FeedTask(NewsListener gui) {
         super();
         activity = gui;
     }
 
     @Override
-    protected P1MainActivity doInBackground(Void... params) {
+    protected NewsListener doInBackground(Void... params) {
         Log.i("tag", "msg");
 
         try {
             ShowsMgr mgr = new ShowsMgr();
+            mgr.fakeIt();
             List<NewsItem> items = mgr.getShowSummaries();
             list.addAll(items);
         }
@@ -42,8 +43,13 @@ public class FeedTask extends AsyncTask<Void, Void, P1MainActivity> {
     }
 
     @Override
-    protected void onPostExecute(P1MainActivity gui) {
+    protected void onPostExecute(NewsListener gui) {
         Log.i("tag", "onPostExecute " + gui);
-        gui.onNewsItems(list, thrown);
+        if (thrown != null) {
+            gui.notifyException("FeedTask", thrown);
+        }
+        else {
+            gui.notifyNewsItems(list);
+        }
     }
 }

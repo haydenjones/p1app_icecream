@@ -21,7 +21,7 @@ public class SocialActivity extends ActionBarActivity {
 
         switch (id) {
             case R.id.link_facebook:
-                link = ShowsMgr.FEED_URL; // "http://facebook.com/priorityonepodcast";
+                link = "http://facebook.com/priorityonepodcast";
                 break;
             case R.id.link_twitter:
                 link = "http://twitter.com/stopriorityone";
@@ -62,44 +62,8 @@ public class SocialActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        Log.i("menu", "" + id);
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        else if (id == R.id.action_podcast) {
-            Intent intent = new Intent(this, P1MainActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_events) {
-            Intent intent = new Intent(this, CalendarActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_news) {
-            Intent intent = new Intent(this, NewsActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_push) {
-            Intent intent = new Intent(this, NotificationsActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_podcast) {
-            Intent intent = new Intent(this, P1MainActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_social) {
-            Intent intent = new Intent(this, SocialActivity.class);
-            startActivity(intent);
+        boolean found = MenuUtil.startActivity(this, item);
+        if (found) {
             return true;
         }
 

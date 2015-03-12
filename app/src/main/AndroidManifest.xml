@@ -17,14 +17,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DisplayMessageActivity"
-            android:label="@string/title_activity_display_message"
-            android:parentActivityName=".P1MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="P1MainActivity" />
-        </activity>
-        <activity
             android:name=".PodcastActivity"
             android:label="@string/title_activity_podcast" >
         </activity>

@@ -1,6 +1,5 @@
 package com.priorityonepodcast.p1app;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,14 +10,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.priorityonepodcast.p1app.tasks.FeedTask;
+import com.priorityonepodcast.p1app.tasks.feed.FeedTask;
 
 import java.util.List;
 
 import com.priorityonepodcast.p1app.model.NewsItem;
+import com.priorityonepodcast.p1app.tasks.feed.NewsListener;
 
 
-public class P1MainActivity extends ActionBarActivity {
+public class P1MainActivity extends ActionBarActivity implements NewsListener {
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -36,44 +36,8 @@ public class P1MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        Log.i("menu", "" + id);
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        else if (id == R.id.action_podcast) {
-            Intent intent = new Intent(this, P1MainActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_events) {
-            Intent intent = new Intent(this, CalendarActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_news) {
-            Intent intent = new Intent(this, NewsActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_push) {
-            Intent intent = new Intent(this, NotificationsActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_podcast) {
-            Intent intent = new Intent(this, P1MainActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_social) {
-            Intent intent = new Intent(this, SocialActivity.class);
-            startActivity(intent);
+        boolean found = MenuUtil.startActivity(this, item);
+        if (found) {
             return true;
         }
 
@@ -86,10 +50,11 @@ public class P1MainActivity extends ActionBarActivity {
         task.execute();
     }
 
-    public void onNewsItems(List<NewsItem> items, Exception e) {
-        if (e != null) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
-        }
+    public void notifyException(String ctx, Exception e) {
+        Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+    }
+
+    public void notifyNewsItems(List<NewsItem> items) {
         EditText editText = (EditText) findViewById(R.id.edit_message);
         EditText toText = (EditText) findViewById(R.id.to_message);
 

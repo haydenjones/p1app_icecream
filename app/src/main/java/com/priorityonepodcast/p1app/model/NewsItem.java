@@ -110,11 +110,15 @@ public class NewsItem {
 
         public void pubDate(String value) {
             try {
-                pubMillis = sdfPubDate.parse(value).getTime();
+                pubDate(sdfPubDate.parse(value));
             }
             catch (ParseException e) {
                 throw new RuntimeException(e);
             }
+        }
+
+        public void pubDate(java.util.Date date) {
+            pubMillis = date.getTime();
         }
 
         public void link(String value) {

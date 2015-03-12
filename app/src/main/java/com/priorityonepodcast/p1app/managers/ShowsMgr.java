@@ -8,6 +8,7 @@ import com.squareup.okhttp.Response;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.priorityonepodcast.p1app.model.NewsItem;
@@ -18,11 +19,36 @@ import com.priorityonepodcast.p1app.model.NewsItem;
 public class ShowsMgr {
     public static final String FEED_URL = "http://priorityonepodcast.com/feed/";
 
+    private List<NewsItem> fakes = new ArrayList<>();
+
     public ShowsMgr() {
         super();
     }
 
+    public void fakeIt() {
+        fakes.clear();
+
+        NewsItem.Builder nib = new NewsItem.Builder();
+        nib.link("#");
+
+        nib.title("Title1");
+        nib.pubDate(java.sql.Date.valueOf("2015-03-01"));
+        fakes.add(nib.build());
+
+        nib.title("Title2");
+        nib.pubDate(java.sql.Date.valueOf("2015-03-02"));
+        fakes.add(nib.build());
+
+        nib.title("Title3");
+        nib.pubDate(java.sql.Date.valueOf("2015-03-03"));
+        fakes.add(nib.build());
+    }
+
     public List<NewsItem> getShowSummaries() throws IOException {
+        if (!fakes.isEmpty()) {
+            return fakes;
+        }
+
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder().url(FEED_URL).build();
