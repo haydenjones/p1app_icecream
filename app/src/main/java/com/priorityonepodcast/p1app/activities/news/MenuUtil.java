@@ -1,9 +1,15 @@
-package com.priorityonepodcast.p1app;
+package com.priorityonepodcast.p1app.activities.news;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.MenuItem;
+
+import com.priorityonepodcast.p1app.CalendarActivity;
+import com.priorityonepodcast.p1app.NotificationsActivity;
+import com.priorityonepodcast.p1app.P1MainActivity;
+import com.priorityonepodcast.p1app.R;
+import com.priorityonepodcast.p1app.SocialActivity;
 
 /**
  * Created by hjones on 2015-03-12.

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/lineTitle"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textSize="16sp"/>
+    <TextView
+        android:id="@+id/linesDesc"
+        android:layout_below="@+id/lineTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ipsum lorum..."
+        android:textSize="16sp"/>
+    <TextView
+        android:id="@+id/linePubDate"
+        android:layout_below="@+id/linesDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PublicationDate"
+        android:textSize="12sp"/>
+
+</RelativeLayout>

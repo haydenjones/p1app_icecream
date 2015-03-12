@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.priorityonepodcast.p1app.NewsActivity">
+    tools:context="com.priorityonepodcast.p1app.activities.news.NewsActivity">
     <item android:id="@+id/action_podcast" android:title="@string/action_podcast" />
     <item android:id="@+id/action_events" android:title="@string/action_events" />
     <item android:id="@+id/action_news" android:title="@string/action_news" />

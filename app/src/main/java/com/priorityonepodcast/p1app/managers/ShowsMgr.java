@@ -30,6 +30,7 @@ public class ShowsMgr {
 
         NewsItem.Builder nib = new NewsItem.Builder();
         nib.link("#");
+        nib.description("Description...");
 
         nib.title("Title1");
         nib.pubDate(java.sql.Date.valueOf("2015-03-01"));

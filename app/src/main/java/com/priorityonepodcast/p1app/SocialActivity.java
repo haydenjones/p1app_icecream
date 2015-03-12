@@ -4,14 +4,13 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import android.net.Uri;
 
-import com.priorityonepodcast.p1app.managers.ShowsMgr;
+import com.priorityonepodcast.p1app.activities.news.MenuUtil;
 
 public class SocialActivity extends ActionBarActivity {
 

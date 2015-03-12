@@ -176,12 +176,20 @@ public class NewsItem {
     // --- Core and Helper Methods
     // --- Getter and Setter Methods
 
+    public String getTitle() {
+        return title;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public String getEnlosureUrl() {
         return enclosureUrl;
+    }
+
+    public String getPublicationDesc() {
+        return String.valueOf(new java.util.Date(pubMillis));
     }
 
     // --- Delegate and Convenience Methods

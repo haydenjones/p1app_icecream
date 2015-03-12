@@ -1,4 +1,4 @@
-package com.priorityonepodcast.p1app;
+package com.priorityonepodcast.p1app.activities.news;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.priorityonepodcast.p1app.R;
+import com.priorityonepodcast.p1app.activities.news.MenuUtil;
+import com.priorityonepodcast.p1app.activities.news.NewsItemArrayAdapter;
 import com.priorityonepodcast.p1app.model.NewsItem;
 import com.priorityonepodcast.p1app.tasks.feed.FeedTask;
 import com.priorityonepodcast.p1app.tasks.feed.NewsListener;
@@ -22,8 +24,7 @@ import java.util.List;
 
 public class NewsActivity extends ActionBarActivity implements NewsListener {
 
-    private volatile ArrayAdapter<String> adapter = null;
-    private final List<String> newsItems = new ArrayList<>();
+    private volatile ArrayAdapter<NewsItem> adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +32,11 @@ public class NewsActivity extends ActionBarActivity implements NewsListener {
         setContentView(R.layout.activity_news);
 
         ListView listView = (ListView) findViewById(R.id.listview_news);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, newsItems);
+        adapter = new NewsItemArrayAdapter(this, new ArrayList<NewsItem>());
         listView.setAdapter(adapter);
+        AdapterView.OnItemClickListener listener = (AdapterView.OnItemClickListener) adapter;
+        listView.setOnItemClickListener(listener);
+        sendMessage(listView);
     }
 
     @Override
@@ -53,7 +57,6 @@ public class NewsActivity extends ActionBarActivity implements NewsListener {
     }
 
     public void sendMessage(View view) {
-        Log.i("tag", "msg");
         FeedTask task = new FeedTask(this);
         task.execute();
     }
@@ -64,10 +67,8 @@ public class NewsActivity extends ActionBarActivity implements NewsListener {
 
     public void notifyNewsItems(List<NewsItem> items) {
         if (adapter != null) {
-            newsItems.clear();
-            for (NewsItem ni : items) {
-                newsItems.add(ni.toString());
-            }
+            adapter.clear();
+            adapter.addAll(items);
             adapter.notifyDataSetChanged();
         }
     }
