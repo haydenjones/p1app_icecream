@@ -1,4 +1,4 @@
-package com.priorityonepodcast.p1app.activities.news;
+package com.priorityonepodcast.p1app.activities;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +10,7 @@ import com.priorityonepodcast.p1app.NotificationsActivity;
 import com.priorityonepodcast.p1app.P1MainActivity;
 import com.priorityonepodcast.p1app.R;
 import com.priorityonepodcast.p1app.SocialActivity;
+import com.priorityonepodcast.p1app.activities.news.NewsActivity;
 
 /**
  * Created by hjones on 2015-03-12.

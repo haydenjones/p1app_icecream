@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 import android.net.Uri;
 
-import com.priorityonepodcast.p1app.activities.news.MenuUtil;
+import com.priorityonepodcast.p1app.activities.MenuUtil;
 
 public class SocialActivity extends ActionBarActivity {
 

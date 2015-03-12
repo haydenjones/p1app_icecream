@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PodcastActivity"
+            android:name=".activities.newsdetail.PodcastActivity"
             android:label="@string/title_activity_podcast" >
         </activity>
         <activity

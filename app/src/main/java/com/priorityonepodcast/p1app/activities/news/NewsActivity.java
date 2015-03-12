@@ -2,7 +2,6 @@ package com.priorityonepodcast.p1app.activities.news;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,8 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.priorityonepodcast.p1app.R;
-import com.priorityonepodcast.p1app.activities.news.MenuUtil;
-import com.priorityonepodcast.p1app.activities.news.NewsItemArrayAdapter;
+import com.priorityonepodcast.p1app.activities.MenuUtil;
 import com.priorityonepodcast.p1app.model.NewsItem;
 import com.priorityonepodcast.p1app.tasks.feed.FeedTask;
 import com.priorityonepodcast.p1app.tasks.feed.NewsListener;
