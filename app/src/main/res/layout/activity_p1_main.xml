@@ -12,18 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/button_load_podcasts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/banner_news"
-        android:text="@string/button_send"
-        android:onClick="onClick"/>
-
     <ListView
         android:id="@+id/listview_podcasts"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_load_podcasts"></ListView>
+        android:layout_below="@+id/banner_news"></ListView>
 
 </RelativeLayout>
