@@ -33,7 +33,7 @@
             android:label="@string/title_activity_notifications" >
         </activity>
         <activity
-            android:name=".SocialActivity"
+            android:name=".activities.SocialActivity"
             android:label="@string/title_activity_social" >
         </activity>
     </application>

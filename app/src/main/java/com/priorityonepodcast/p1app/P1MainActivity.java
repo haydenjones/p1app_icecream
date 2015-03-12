@@ -6,25 +6,40 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.priorityonepodcast.p1app.activities.MenuUtil;
+import com.priorityonepodcast.p1app.activities.news.NewsItemArrayAdapter;
 import com.priorityonepodcast.p1app.tasks.feed.FeedTask;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.priorityonepodcast.p1app.model.NewsItem;
 import com.priorityonepodcast.p1app.tasks.feed.NewsListener;
+import com.priorityonepodcast.p1app.tasks.feed.PodcastTask;
 
 
 public class P1MainActivity extends ActionBarActivity implements NewsListener {
+
+    private volatile ArrayAdapter<NewsItem> adapter = null;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_p1_main);
+
+            ListView listView = (ListView) findViewById(R.id.listview_podcasts);
+            adapter = new PodcastArrayAdapter(this, new ArrayList<NewsItem>());
+            listView.setAdapter(adapter);
+            AdapterView.OnItemClickListener listener = (AdapterView.OnItemClickListener) adapter;
+            listView.setOnItemClickListener(listener);
+            onClick(listView);
         }
 
 
@@ -45,9 +60,9 @@ public class P1MainActivity extends ActionBarActivity implements NewsListener {
         return super.onOptionsItemSelected(item);
     }
 
-    public void sendMessage(View view) {
+    public void onClick(View view) {
         Log.i("tag", "msg");
-        FeedTask task = new FeedTask(this);
+        PodcastTask task = new PodcastTask(this);
         task.execute();
     }
 
@@ -56,14 +71,10 @@ public class P1MainActivity extends ActionBarActivity implements NewsListener {
     }
 
     public void notifyNewsItems(List<NewsItem> items) {
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        EditText toText = (EditText) findViewById(R.id.to_message);
-
-        editText.setText(items.size() + " loaded", TextView.BufferType.NORMAL);
-        String toTxt = "";
-        if (!items.isEmpty()) {
-            toTxt = items.get(0).toString();
+        if (adapter != null) {
+            adapter.clear();
+            adapter.addAll(items);
+            adapter.notifyDataSetChanged();
         }
-        toText.setText(toTxt, TextView.BufferType.NORMAL);
     }
 }

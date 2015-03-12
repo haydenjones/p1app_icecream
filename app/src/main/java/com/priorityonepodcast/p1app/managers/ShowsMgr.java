@@ -18,6 +18,7 @@ import com.priorityonepodcast.p1app.model.NewsItem;
  */
 public class ShowsMgr {
     public static final String FEED_URL = "http://priorityonepodcast.com/feed/";
+    public static final String PODCAST_URL = FEED_URL + "/podcast/";
 
     private List<NewsItem> fakes = new ArrayList<>();
 
@@ -45,14 +46,18 @@ public class ShowsMgr {
         fakes.add(nib.build());
     }
 
-    public List<NewsItem> getShowSummaries() throws IOException {
+    public List<NewsItem> getPodcasts() throws IOException {
+        return getNews(PODCAST_URL);
+    }
+
+    List<NewsItem> getNews(String feedUrl) throws IOException {
         if (!fakes.isEmpty()) {
             return fakes;
         }
 
         OkHttpClient client = new OkHttpClient();
 
-        Request request = new Request.Builder().url(FEED_URL).build();
+        Request request = new Request.Builder().url(feedUrl).build();
 
         Response response = client.newCall(request).execute();
         if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
@@ -70,5 +75,9 @@ public class ShowsMgr {
         finally {
             Close.safely(stream);
         }
+    }
+
+    public List<NewsItem> getShowSummaries() throws IOException {
+        return getNews(FEED_URL);
     }
 }

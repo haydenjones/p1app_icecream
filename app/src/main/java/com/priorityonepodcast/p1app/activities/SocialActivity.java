@@ -1,4 +1,4 @@
-package com.priorityonepodcast.p1app;
+package com.priorityonepodcast.p1app.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 import android.net.Uri;
 
+import com.priorityonepodcast.p1app.R;
 import com.priorityonepodcast.p1app.activities.MenuUtil;
 
 public class SocialActivity extends ActionBarActivity {

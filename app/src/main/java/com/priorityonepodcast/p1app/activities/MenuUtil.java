@@ -9,7 +9,6 @@ import com.priorityonepodcast.p1app.CalendarActivity;
 import com.priorityonepodcast.p1app.NotificationsActivity;
 import com.priorityonepodcast.p1app.P1MainActivity;
 import com.priorityonepodcast.p1app.R;
-import com.priorityonepodcast.p1app.SocialActivity;
 import com.priorityonepodcast.p1app.activities.news.NewsActivity;
 
 /**

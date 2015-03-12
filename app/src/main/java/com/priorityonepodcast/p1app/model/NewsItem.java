@@ -17,6 +17,12 @@ public class NewsItem {
             void apply2(Builder b, String value) {
             }
         },
+        GUID("guid") {
+            @Override
+            void apply2(Builder b, String value) {
+              b.guid(value);
+            }
+        },
         TITLE("title") {
             @Override
             void apply2(Builder b, String value) {
@@ -82,6 +88,8 @@ public class NewsItem {
     public static class Builder {
         // Wed, 11 Mar 2015 15:47:49 +0000
         private final SimpleDateFormat sdfPubDate = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss ZZZZ", Locale.US);
+
+        private String guid = "";
         private String title = "";
         private String link = "";
         private long pubMillis = 0;
@@ -89,6 +97,7 @@ public class NewsItem {
         private String enclosureUrl = "";
 
         public void reset() {
+            guid = "";
             title = "";
             link = "";
             pubMillis = 0;
@@ -99,6 +108,8 @@ public class NewsItem {
         public Builder() {
             super();
         }
+
+        public void guid(String value) { guid = value; }
 
         public void enclosureUrl(String value) {
             enclosureUrl = value;
@@ -157,15 +168,18 @@ public class NewsItem {
 
     // --- Constants and Variables
 
+    private final String guid;
     private final String title;
     private final String link;
     private final long pubMillis;
     private final String description;
     private final String enclosureUrl;
+
     // --- Constructor and Initialization Methods
 
     private NewsItem(Builder b) {
         super();
+        guid = b.guid;
         title = b.title;
         link = b.link;
         pubMillis = b.pubMillis;
@@ -175,6 +189,8 @@ public class NewsItem {
 
     // --- Core and Helper Methods
     // --- Getter and Setter Methods
+
+    public String getGuid() { return guid; }
 
     public String getTitle() {
         return title;

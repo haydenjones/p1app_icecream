@@ -3,24 +3,22 @@ package com.priorityonepodcast.p1app.tasks.feed;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.priorityonepodcast.p1app.P1MainActivity;
 import com.priorityonepodcast.p1app.managers.ShowsMgr;
+import com.priorityonepodcast.p1app.model.NewsItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.priorityonepodcast.p1app.model.NewsItem;
-
 /**
  * Created by hjones on 2015-03-11.
  */
-public class FeedTask extends AsyncTask<Void, Void, NewsListener> {
+public class PodcastTask extends AsyncTask<Void, Void, NewsListener> {
     private final NewsListener activity;
 
     private final List<NewsItem> list = new ArrayList<>();
     private volatile Exception thrown = null;
 
-    public FeedTask(NewsListener gui) {
+    public PodcastTask(NewsListener gui) {
         super();
         activity = gui;
     }
@@ -31,7 +29,7 @@ public class FeedTask extends AsyncTask<Void, Void, NewsListener> {
 
         try {
             ShowsMgr mgr = new ShowsMgr();
-            List<NewsItem> items = mgr.getShowSummaries();
+            List<NewsItem> items = mgr.getPodcasts();
             list.addAll(items);
         }
         catch (Exception e) {

@@ -1,4 +1,4 @@
-package com.priorityonepodcast.p1app.activities.news;
+package com.priorityonepodcast.p1app;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.priorityonepodcast.p1app.activities.newsdetail.PodcastActivity;
-import com.priorityonepodcast.p1app.R;
 import com.priorityonepodcast.p1app.model.NewsItem;
 
 import java.util.List;
@@ -20,11 +19,11 @@ import java.util.List;
 /**
  * Created by hjones on 2015-03-12.
  */
-public class NewsItemArrayAdapter extends ArrayAdapter<NewsItem> implements AdapterView.OnItemClickListener {
+public class PodcastArrayAdapter extends ArrayAdapter<NewsItem> implements AdapterView.OnItemClickListener {
     private final List<NewsItem> newsItem;
     private final ActionBarActivity context;
 
-    public NewsItemArrayAdapter(ActionBarActivity ctx, List<NewsItem> items) {
+    public PodcastArrayAdapter(ActionBarActivity ctx, List<NewsItem> items) {
         super(ctx, R.layout.news_summary, items);
         newsItem = items;
         context = ctx;
