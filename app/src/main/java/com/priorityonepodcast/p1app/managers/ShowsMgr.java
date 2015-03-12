@@ -6,7 +6,6 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -17,21 +16,16 @@ import com.priorityonepodcast.p1app.model.NewsItem;
  * Created by hjones on 2015-03-06.
  */
 public class ShowsMgr {
-    private final File file;
+    public static final String FEED_URL = "http://priorityonepodcast.com/feed/";
 
     public ShowsMgr() {
-        this(null);
-    }
-
-    ShowsMgr(File f) {
         super();
-        file = f;
     }
 
     public List<NewsItem> getShowSummaries() throws IOException {
         OkHttpClient client = new OkHttpClient();
 
-        Request request = new Request.Builder().url("http://priorityonepodcast.com/feed/") .build();
+        Request request = new Request.Builder().url(FEED_URL).build();
 
         Response response = client.newCall(request).execute();
         if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);

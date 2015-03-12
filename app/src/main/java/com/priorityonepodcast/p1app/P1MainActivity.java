@@ -3,6 +3,7 @@ package com.priorityonepodcast.p1app;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,7 @@ public class P1MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        Log.i("menu", "" + id);
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
@@ -79,7 +81,8 @@ public class P1MainActivity extends ActionBarActivity {
     }
 
     public void sendMessage(View view) {
-        FeedTask task = new FeedTask();
+        Log.i("tag", "msg");
+        FeedTask task = new FeedTask(this);
         task.execute();
     }
 
