@@ -41,10 +41,22 @@ public class NewsItem {
                 b.pubDate(value);
             }
         },
+        CREATOR("dc:creator") {
+            @Override
+            void apply2(Builder b, String value) {
+                b.creator(value);
+            }
+        },
         DESCRIPTION("description") {
             @Override
             void apply2(Builder b, String value) {
                 b.description(value);
+            }
+        },
+        CONTENT_ENCODED("content:encoded") {
+            @Override
+            void apply2(Builder b, String value) {
+                b.contentEncoded(value);
             }
         },
         ENCLOSURE("enclosure") {
@@ -90,24 +102,32 @@ public class NewsItem {
         private final SimpleDateFormat sdfPubDate = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss ZZZZ", Locale.US);
 
         private String guid = "";
+        private String creator = "";
         private String title = "";
         private String link = "";
         private long pubMillis = 0;
         private String description = "";
         private String enclosureUrl = "";
+        private String contentEncoded = "";
 
         public void reset() {
             guid = "";
+            creator = "";
             title = "";
             link = "";
             pubMillis = 0;
             description = "";
             enclosureUrl = "";
+            contentEncoded = "";
         }
 
         public Builder() {
             super();
         }
+
+        public void creator(String value) { creator = value; }
+
+        public void contentEncoded(String value) { contentEncoded = value; }
 
         public void guid(String value) { guid = value; }
 
@@ -168,27 +188,39 @@ public class NewsItem {
 
     // --- Constants and Variables
 
+    private final String creator;
     private final String guid;
     private final String title;
     private final String link;
     private final long pubMillis;
     private final String description;
     private final String enclosureUrl;
+    private final String contentEncoded;
 
     // --- Constructor and Initialization Methods
 
     private NewsItem(Builder b) {
         super();
+        creator = b.creator;
         guid = b.guid;
         title = b.title;
         link = b.link;
         pubMillis = b.pubMillis;
         description = b.description;
         enclosureUrl = b.enclosureUrl;
+        contentEncoded = b.contentEncoded;
     }
 
     // --- Core and Helper Methods
     // --- Getter and Setter Methods
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public String getContentEncoded() {
+        return contentEncoded;
+    }
 
     public String getGuid() { return guid; }
 
@@ -203,6 +235,8 @@ public class NewsItem {
     public String getEnlosureUrl() {
         return enclosureUrl;
     }
+
+    public String getLink() { return link; }
 
     public String getPublicationDesc() {
         return String.valueOf(new java.util.Date(pubMillis));

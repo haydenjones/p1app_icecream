@@ -1,5 +1,7 @@
 package com.priorityonepodcast.p1app.managers;
 
+import com.priorityonepodcast.p1app.model.CalendarEvent;
+import com.priorityonepodcast.p1app.tasks.feed.CalendarEventTask;
 import com.priorityonepodcast.p1app.util.Close;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -19,6 +21,7 @@ import com.priorityonepodcast.p1app.model.NewsItem;
 public class ShowsMgr {
     public static final String FEED_URL = "http://priorityonepodcast.com/feed/";
     public static final String PODCAST_URL = FEED_URL + "/podcast/";
+    public static final String EVENT_URL = "http://www.google.com/calendar/feeds/sto.hayden@gmail.com/public/basic";
 
     private List<NewsItem> fakes = new ArrayList<>();
 
@@ -44,6 +47,29 @@ public class ShowsMgr {
         nib.title("Title3");
         nib.pubDate(java.sql.Date.valueOf("2015-03-03"));
         fakes.add(nib.build());
+    }
+
+    public List<CalendarEvent> getCalendarEvents() throws IOException {
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder().url(EVENT_URL).build();
+
+        Response response = client.newCall(request).execute();
+        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+        InputStream stream = null;
+
+        try {
+            stream = new ByteArrayInputStream(response.body().bytes());
+            CalendarEventHandler task = new CalendarEventHandler(stream);
+            return task.call();
+        }
+        catch (Exception e) {
+            throw new IOException(e);
+        }
+        finally {
+            Close.safely(stream);
+        }
     }
 
     public List<NewsItem> getPodcasts() throws IOException {

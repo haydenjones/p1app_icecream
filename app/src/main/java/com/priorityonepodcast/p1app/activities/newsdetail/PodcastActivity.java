@@ -1,10 +1,17 @@
 package com.priorityonepodcast.p1app.activities.newsdetail;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.priorityonepodcast.p1app.R;
 import com.priorityonepodcast.p1app.activities.MenuUtil;
@@ -19,6 +26,8 @@ public class PodcastActivity extends ActionBarActivity {
 
     public static final String NEWS_ITEM_ID = "news_item_id";
 
+    private String link = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +41,17 @@ public class PodcastActivity extends ActionBarActivity {
             tv = (TextView) findViewById(R.id.lbl_pubDate);
             tv.setText(ni.getPublicationDesc());
 
-            tv = (TextView) findViewById(R.id.lbl_content);
-            tv.setText(ni.getDescription());
-        }
+            tv = (TextView) findViewById(R.id.lbl_creator);
+            tv.setText(ni.getCreator());
 
+            tv = (TextView) findViewById(R.id.lbl_content);
+            tv.setText(Html.fromHtml(ni.getContentEncoded(), new ImageGetter(this), null));
+
+            link = ni.getLink();
+        }
+        else {
+            link = "";
+        }
     }
 
 
@@ -54,5 +70,16 @@ public class PodcastActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickTitle(View view) {
+        try {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+            startActivity(i);
+        }
+        catch (ActivityNotFoundException e) {
+            Toast.makeText(this, "No Application can handle this request, please install a web browser.", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
     }
 }

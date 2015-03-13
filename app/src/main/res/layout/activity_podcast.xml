@@ -14,13 +14,16 @@
 
     <TextView
         android:id="@+id/lbl_title"
-        android:text="Title" android:layout_width="wrap_content"
+        android:text="Title"
+        android:textSize="20sp"
+        android:onClick="onClickTItle"
+        android:layout_width="wrap_content"
         android:layout_below="@id/banner_news"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/lbl_by"
-        android:text="By" android:layout_width="wrap_content"
+        android:text="By " android:layout_width="wrap_content"
         android:layout_below="@id/lbl_title"
         android:layout_height="wrap_content" />
 
@@ -33,7 +36,7 @@
 
     <TextView
         android:id="@+id/lbl_on"
-        android:text="on" android:layout_width="wrap_content"
+        android:text="on " android:layout_width="wrap_content"
         android:layout_below="@id/lbl_by"
         android:layout_height="wrap_content" />
 
@@ -52,11 +55,11 @@
         android:text="Play"
         />
 
-
     <TextView
         android:id="@+id/lbl_content"
-        android:text="(content)" android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/btn_play"
-        android:layout_height="wrap_content" />
+         />
 
 </RelativeLayout>
