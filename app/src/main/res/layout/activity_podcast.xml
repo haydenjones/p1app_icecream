@@ -17,6 +17,7 @@
         android:text="Title"
         android:textSize="20sp"
         android:onClick="onClickTitle"
+        android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_below="@id/banner_news"
         android:layout_height="wrap_content" />
