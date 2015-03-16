@@ -1,5 +1,7 @@
 package com.priorityonepodcast.p1app.managers;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -182,7 +184,7 @@ public class CalendarEventIcsHandler {
         }
 
         public void append(CalendarEvent.Builder b, String s) {
-            throw new RuntimeException("Append not support for " + this + " called for content: " + s);
+            Log.w("", this + " append " + s);
         }
     }
 
@@ -229,7 +231,7 @@ public class CalendarEventIcsHandler {
         // "20150327T160000Z";
         value = value.trim();
         int length = value.length();
-        if (length != 16) {
+        if ((length < 15) || (length > 16)) {
             throw new ParseException(value + " not in expected format", 0);
         }
 

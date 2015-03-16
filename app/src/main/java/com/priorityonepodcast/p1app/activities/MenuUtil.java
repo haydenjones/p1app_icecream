@@ -5,7 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.priorityonepodcast.p1app.CalendarActivity;
+import com.priorityonepodcast.p1app.activities.coe.CalendarActivity;
 import com.priorityonepodcast.p1app.NotificationsActivity;
 import com.priorityonepodcast.p1app.P1MainActivity;
 import com.priorityonepodcast.p1app.R;

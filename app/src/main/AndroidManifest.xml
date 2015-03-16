@@ -20,7 +20,7 @@
             android:label="@string/title_activity_podcast" >
         </activity>
         <activity
-            android:name=".CalendarActivity"
+            android:name=".activities.coe.CalendarActivity"
             android:label="@string/title_activity_calendar" >
         </activity>
         <activity
