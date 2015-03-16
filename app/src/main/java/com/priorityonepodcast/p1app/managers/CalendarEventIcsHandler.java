@@ -11,6 +11,7 @@ import java.util.NavigableMap;
 import java.util.TreeMap;
 
 import com.priorityonepodcast.p1app.model.CalendarEvent;
+import com.priorityonepodcast.p1app.model.CalendarEvent.Builder;
 
 public class CalendarEventIcsHandler {
 
@@ -75,8 +76,8 @@ public class CalendarEventIcsHandler {
             }
         },
         /**
-        *
-        */
+         *
+         */
         DTEND("DTEND:") {
             @Override
             public void firstToken(CalendarEvent.Builder b, String s, CalendarEventIcsHandler dateParser) {
@@ -108,8 +109,8 @@ public class CalendarEventIcsHandler {
          */
         CREATED("CREATED:"),
         /**
-        *
-        */
+         *
+         */
         DESCRIPTION("DESCRIPTION:") {
             @Override
             public void firstToken(CalendarEvent.Builder b, String s, CalendarEventIcsHandler dateParser) {
@@ -117,12 +118,12 @@ public class CalendarEventIcsHandler {
             }
         },
         /**
-        *
-        */
+         *
+         */
         LAST_MODIFIED("LAST-MODIFIED:"),
         /**
-        *
-        */
+         *
+         */
         LOCATION("LOCATION:") {
             @Override
             public void firstToken(CalendarEvent.Builder b, String s, CalendarEventIcsHandler dateParser) {
@@ -130,12 +131,12 @@ public class CalendarEventIcsHandler {
             }
         },
         /**
-        *
-        */
+         *
+         */
         SEQUENCE("SEQUENCE:"),
         /**
-        *
-        */
+         *
+         */
         STATUS("STATUS:") {
             @Override
             public void firstToken(CalendarEvent.Builder b, String s, CalendarEventIcsHandler dateParser) {
@@ -143,8 +144,8 @@ public class CalendarEventIcsHandler {
             }
         },
         /**
-        *
-        */
+         *
+         */
         SUMMARY("SUMMARY:") {
             @Override
             public void firstToken(CalendarEvent.Builder b, String s, CalendarEventIcsHandler dateParser) {
@@ -152,16 +153,16 @@ public class CalendarEventIcsHandler {
             }
         },
         /**
-        *
-        */
+         *
+         */
         TRANSP("TRANSP:"),
         /**
-        *
-        */
+         *
+         */
         END_VEVENT("END:VEVENT"),
         /**
-        *
-        */
+         *
+         */
         END_VCALENDAR("END:VCALENDAR");
 
         private final String qName;
