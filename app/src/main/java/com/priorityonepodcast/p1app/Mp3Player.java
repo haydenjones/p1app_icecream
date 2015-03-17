@@ -34,7 +34,7 @@ public class Mp3Player extends ActionBarActivity {
         buttonPlayStop = (Button) findViewById(R.id.ButtonPlayStop);
         buttonPlayStop.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {buttonClick();}});
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.testsong_20_sec);
+        mediaPlayer = MediaPlayer.create(this, R.raw.pca15b);
         Log.i("mp " + mediaPlayer, "mp " + mediaPlayer);
         seekBar = (SeekBar) findViewById(R.id.SeekBar01);
         seekBar.setMax(mediaPlayer.getDuration());

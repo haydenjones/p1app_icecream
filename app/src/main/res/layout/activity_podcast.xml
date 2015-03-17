@@ -49,21 +49,23 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:text="Play"
+        android:text="@string/play_str"
         android:textSize="15pt"
         android:textStyle="bold"
-        android:id="@+id/ButtonPlayStop"
+        android:id="@+id/btn_playStop"
         android:layout_below="@id/lbl_pubDate"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
-    <SeekBar
-        android:id="@+id/SeekBar01"
         android:layout_height="wrap_content"
+        />
+    <SeekBar
+        android:id="@+id/seekbar_podcast"
         android:layout_width="fill_parent"
-        android:layout_below="@id/ButtonPlayStop"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_playStop"
+        />
 
     <ScrollView
-        android:layout_below="@id/SeekBar01"
+        android:layout_below="@id/seekbar_podcast"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
         <TextView
