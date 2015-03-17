@@ -6,4 +6,5 @@
     <item android:id="@+id/action_news" android:title="@string/action_news" />
     <item android:id="@+id/action_push" android:title="@string/action_push" />
     <item android:id="@+id/action_social" android:title="@string/action_social" />
+    <item android:id="@+id/action_mp3" android:title="Play MP3" />
 </menu>

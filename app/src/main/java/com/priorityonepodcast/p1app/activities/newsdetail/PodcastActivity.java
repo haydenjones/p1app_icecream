@@ -1,15 +1,22 @@
 package com.priorityonepodcast.p1app.activities.newsdetail;
 
 import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +60,6 @@ public class PodcastActivity extends ActionBarActivity {
             link = "";
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

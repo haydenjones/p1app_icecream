@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="play_str">PLAY</string>
+    <string name="pause_str">PAUSE</string>
+
     <string name="app_name">Priority One Podcast</string>
     <string name="edit_message">Enter a message</string>
     <string name="to_message">...</string>
@@ -20,5 +23,6 @@
     <string name="action_news">News</string>
     <string name="action_push">Notifications</string>
     <string name="action_social">Social Media</string>
+    <string name="title_activity_mp3_player">Mp3Player</string>
 
 </resources>
