@@ -4,12 +4,14 @@ import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +39,6 @@ public class PodcastActivity extends ActionBarActivity {
 
     private Button buttonPlayStop;
     private MediaPlayer mediaPlayer;
-    private SeekBar seekBar;
 
     private final Handler handler = new Handler();
 
@@ -59,8 +61,11 @@ public class PodcastActivity extends ActionBarActivity {
             tv = (TextView) findViewById(R.id.lbl_creator);
             tv.setText(ni.getCreator());
 
-            tv = (TextView) findViewById(R.id.lbl_content);
-            tv.setText(Html.fromHtml(ni.getContentEncoded(), new ImageGetter(this), null));
+            final TextView tvHtml = (TextView) findViewById(R.id.lbl_content);
+
+            UrlImageParser p = new UrlImageParser(tvHtml, this);
+            Spanned htmlSpan = Html.fromHtml(ni.getContentEncoded(), p, null);
+            tvHtml.setText(htmlSpan);
 
             link = ni.getLink();
             mediaUrl = ni.getEnlosureUrl();
@@ -83,21 +88,10 @@ public class PodcastActivity extends ActionBarActivity {
         Uri uri = Uri.parse(mediaUrl);
         if (uri != null) {
             mediaPlayer = MediaPlayer.create(this, uri);
-            Log.i("mp " + mediaPlayer, "mp " + mediaPlayer);
-            seekBar = (SeekBar) findViewById(R.id.seekbar_podcast);
-            seekBar.setMax(mediaPlayer.getDuration());
-            seekBar.setOnTouchListener(new View.OnTouchListener() {@Override public boolean onTouch(View v, MotionEvent event) {
-                                           seekChange(v);
-                                           return false;
-                                       }
-                                       }
-            );
         }
     }
 
     public void startPlayProgressUpdater() {
-        seekBar.setProgress(mediaPlayer.getCurrentPosition());
-
         if (mediaPlayer.isPlaying()) {
             Runnable notification = new Runnable() {
                 public void run() {
@@ -108,15 +102,6 @@ public class PodcastActivity extends ActionBarActivity {
         }else{
             mediaPlayer.pause();
             buttonPlayStop.setText(getString(R.string.play_str));
-            seekBar.setProgress(0);
-        }
-    }
-
-    // This is event handler thumb moving event
-    private void seekChange(View v){
-        if(mediaPlayer.isPlaying()){
-            SeekBar sb = (SeekBar)v;
-            mediaPlayer.seekTo(sb.getProgress());
         }
     }
 

@@ -5,7 +5,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.priorityonepodcast.p1app.Mp3Player;
 import com.priorityonepodcast.p1app.activities.coe.CalendarActivity;
 import com.priorityonepodcast.p1app.NotificationsActivity;
 import com.priorityonepodcast.p1app.P1MainActivity;
@@ -41,9 +40,6 @@ public class MenuUtil {
                 break;
             case R.id.action_social:
                 intent = new Intent(activity, SocialActivity.class);
-                break;
-            case R.id.action_mp3:
-                intent = new Intent(activity, Mp3Player.class);
                 break;
         default:
         intent = null;

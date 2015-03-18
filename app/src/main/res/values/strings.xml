@@ -24,5 +24,6 @@
     <string name="action_push">Notifications</string>
     <string name="action_social">Social Media</string>
     <string name="title_activity_mp3_player">Mp3Player</string>
+    <string name="title_activity_news_detail">NewsDetailActivity</string>
 
 </resources>

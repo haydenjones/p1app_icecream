@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.priorityonepodcast.p1app.activities.newsdetail.NewsDetailActivity;
 import com.priorityonepodcast.p1app.activities.newsdetail.PodcastActivity;
 import com.priorityonepodcast.p1app.R;
 import com.priorityonepodcast.p1app.model.NewsItem;
@@ -60,15 +61,11 @@ public class NewsItemArrayAdapter extends ArrayAdapter<NewsItem> implements Adap
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(context, PodcastActivity.class);
-        String guid = "";
-        PodcastActivity.HOLDER.set(null);
+        Intent i = new Intent(context, NewsDetailActivity.class);
         if ((position >= 0) && (newsItem.size() > position)) {
             NewsItem ni = newsItem.get(position);
-            PodcastActivity.HOLDER.set(ni);
-            guid = ni.getGuid();
+            NewsDetailActivity.HOLDER.set(ni);
         }
-        i.putExtra(PodcastActivity.NEWS_ITEM_ID, guid);
         context.startActivity(i);
     }
 }

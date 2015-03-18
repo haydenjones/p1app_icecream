@@ -57,17 +57,18 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         />
+
     <SeekBar
-        android:id="@+id/seekbar_podcast"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/seekBar_podcast"
         android:layout_below="@id/btn_playStop"
-        />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
     <ScrollView
-        android:layout_below="@id/seekbar_podcast"
+        android:id="@+id/scrollView_content"
+        android:layout_below="@id/seekBar_podcast"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="wrap_content">
         <TextView
             android:id="@+id/lbl_content"
             android:layout_width="fill_parent"

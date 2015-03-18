@@ -46,6 +46,10 @@
             android:name=".Mp3Player"
             android:label="@string/title_activity_mp3_player" >
         </activity>
+        <activity
+            android:name=".activities.newsdetail.NewsDetailActivity"
+            android:label="@string/title_activity_news_detail" >
+        </activity>
     </application>
 
 </manifest>
