@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.priorityonepodcast.p1app.activities.coe.CalendarActivity;
-import com.priorityonepodcast.p1app.NotificationsActivity;
+import com.priorityonepodcast.p1app.activities.gcm.DemoActivity;
 import com.priorityonepodcast.p1app.P1MainActivity;
 import com.priorityonepodcast.p1app.R;
 import com.priorityonepodcast.p1app.activities.news.NewsActivity;
@@ -36,7 +36,7 @@ public class MenuUtil {
                 intent = new Intent(activity, NewsActivity.class);
                 break;
             case R.id.action_push:
-                intent = new Intent(activity, NotificationsActivity.class);
+                intent = new Intent(activity, DemoActivity.class);
                 break;
             case R.id.action_social:
                 intent = new Intent(activity, SocialActivity.class);

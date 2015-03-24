@@ -26,4 +26,6 @@
     <string name="title_activity_mp3_player">Mp3Player</string>
     <string name="title_activity_news_detail">NewsDetailActivity</string>
 
+    <string name="send">Send</string>
+    <string name="clear">Clear</string>
 </resources>
