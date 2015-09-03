@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         release {
-            storeFile file("/usr/share/jenkins/devkeystore")
+            storeFile file("/var/cache/jenkins/devkeystore")
             storePassword "keystore"
             keyAlias "client"
             keyPassword "password2"
