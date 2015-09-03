@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file("/usr/share/jenkins/devkeystore")
+            storePassword "keystore"
+            keyAlias "client"
+            keyPassword "password"
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
 
