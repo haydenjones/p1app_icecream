@@ -6,7 +6,7 @@ android {
             storeFile file("/var/cache/jenkins/devkeystore")
             storePassword "keystore"
             keyAlias "client"
-            keyPassword "password2"
+            keyPassword "password"
         }
     }
     compileSdkVersion 21
